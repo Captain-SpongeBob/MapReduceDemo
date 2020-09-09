@@ -1,11 +1,11 @@
-package com.lds.WordCount;
-
-import java.io.IOException;
+package com.lds.combiner;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+
+import java.io.IOException;
 
 /**
  * Hello world!

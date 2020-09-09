@@ -1,9 +1,9 @@
-package com.lds.BeanWritable;
-
-import java.io.IOException;
+package com.lds.flowsum;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
+
+import java.io.IOException;
 
 public class FlowCountReducer extends Reducer<Text, FlowBean, Text, FlowBean> {
 

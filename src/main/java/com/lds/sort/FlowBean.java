@@ -1,12 +1,13 @@
-package com.lds.BeanWritable;
+package com.lds.sort;
+
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-import org.apache.hadoop.io.Writable;
-
-public class FlowBean implements Writable {
+public class FlowBean implements WritableComparable<FlowBean>{
     private long upFlow;
     private long downFlow;
     private long sumFlow;
@@ -23,7 +24,6 @@ public class FlowBean implements Writable {
 
     @Override
     public void write(DataOutput out) throws IOException {
-        // TODO Auto-generated method stub
         out.writeLong(upFlow);
         out.writeLong(downFlow);
         out.writeLong(sumFlow);
@@ -32,12 +32,12 @@ public class FlowBean implements Writable {
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        // TODO Auto-generated method stub
-        this.upFlow = in.readLong();
-        this.downFlow = in.readLong();
-        this.sumFlow = in.readLong();
+        upFlow = in.readLong();
+        downFlow = in.readLong();
+        sumFlow = in.readLong();
+
     }
-    
+
     public String toString() {
         return upFlow + "\t" + downFlow + "\t" + sumFlow;
     }
@@ -73,4 +73,14 @@ public class FlowBean implements Writable {
     }
 
 
+    @Override
+    public int compareTo(FlowBean o) {
+        if (this.sumFlow > o.getSumFlow()){
+            return -1;
+        }else if (this.sumFlow < o.getSumFlow()){
+            return 1;
+        }else {
+            return 0;
+        }
+    }
 }

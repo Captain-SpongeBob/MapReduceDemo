@@ -1,14 +1,15 @@
-package com.lds.BeanWritable;
-
-import java.io.IOException;
+package com.lds.flowsum;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class FlowCountMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
-    private FlowBean v = new FlowBean();
-    private Text k = new Text();
+import java.io.IOException;
+
+public class FlowCountMapper extends Mapper<LongWritable, Text, Text,FlowBean> {
+    FlowBean v = new FlowBean();
+    Text k = new Text();
+
 
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -25,8 +26,9 @@ public class FlowCountMapper extends Mapper<LongWritable, Text, Text, FlowBean> 
        long downFlow = Long.parseLong(fields[fields.length - 2]);
        
        //
-        k.set(phonenum);
         v.set(upFlow,downFlow);
+        k.set(phonenum);
+
         //
         context.write(k, v);
     }
