@@ -9,6 +9,7 @@ import java.io.IOException;
 public class SequenceFileReducer extends Reducer<Text, BytesWritable,Text,BytesWritable> {
     @Override
     protected void reduce(Text key, Iterable<BytesWritable> values, Context context) throws IOException, InterruptedException {
+
         context.write(key,values.iterator().next());
     }
 }

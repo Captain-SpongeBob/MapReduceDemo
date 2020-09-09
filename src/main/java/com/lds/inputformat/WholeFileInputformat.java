@@ -14,11 +14,13 @@ import java.io.IOException;
 public class WholeFileInputformat extends FileInputFormat<Text, BytesWritable> {
     @Override
     protected boolean isSplitable(JobContext context, Path filename) {
+        //设置为不可分片
         return false;
     }
 
     @Override
     public RecordReader createRecordReader(InputSplit split, TaskAttemptContext context) throws IOException, InterruptedException {
+        //创建自定义的ReordReader
         WholeRecordReader wholeRecordReader = new WholeRecordReader();
         wholeRecordReader.initialize(split,context);
         return wholeRecordReader;

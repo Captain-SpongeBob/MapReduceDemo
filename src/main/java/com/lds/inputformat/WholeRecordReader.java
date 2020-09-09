@@ -11,8 +11,6 @@ import org.apache.hadoop.mapreduce.InputSplit;
 import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
-
-import java.io.FileInputStream;
 import java.io.IOException;
 
 public class WholeRecordReader extends RecordReader<Text, BytesWritable> {
